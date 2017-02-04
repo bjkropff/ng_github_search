@@ -1,6 +1,6 @@
 ## Angular Documentation QuickStart Changelog
-Upgraders: for a fresh start, consider running these commands 
-* `git clean -xdf` 
+Upgraders: for a fresh start, consider running these commands
+* `git clean -xdf`
 * `npm install`
 
 <a name="0.2.22"></a>
@@ -116,11 +116,11 @@ Upgraders: for a fresh start, consider running these commands
 <a name="0.2.1"></a>
 # 0.2.1 (2016-05-03)
 * Angular 2 RC01 version
-  
+
 <a name="0.2.0"></a>
 # 0.2.0 (2016-05-02)
 * Angular 2 RC0 version
-  
+
 <a name="0.1.17"></a>
 # 0.1.17 (2016-04-29)
 * update packages
