@@ -6,19 +6,24 @@ import { GithubService } from '../services/github.service'
   selector: 'profile',
   templateUrl: `./profile.component.html`,
 })
-export class ProfileComponent  {
-  user:any[];
-  repos:any[];
+export class ProfileComponent {
+    user:any;
+    repos:any[];
+    username: string;
 
-  constructor( private _githubService: GithubService){
+    constructor(private _githubService: GithubService){
+        this.user = false;
+    }
 
-    this._githubService.getUser().subscribe( user => {
-        this.user = user;
-    }) ;
+    searchUser(){
+        this._githubService.updateUser(this.username);
 
-    this._githubService.getRepos().subscribe( repos => {
-        this.repos = repos;
-    }) ;
-  }
-  
+        this._githubService.getUser().subscribe(user => {
+            this.user = user;
+        });
+
+        this._githubService.getRepos().subscribe(repos => {
+            this.repos = repos;
+        });
+    }
 }
