@@ -1,15 +1,21 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+
 import { AppComponent }  from './app.component';
 
-import { ProfileComponent } from './components/profile.component';
+import {SearchComponent} from './components/search/search.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {AboutComponent} from './components/about/about.component';
+
+import {routing} from './app.routing';
 
 @NgModule({
-  imports:      [ BrowserModule, HttpModule, FormsModule ],
-  declarations: [ AppComponent, ProfileComponent ],
-  bootstrap:    [ AppComponent ]
+  imports: [ BrowserModule,
+              routing ],
+  declarations: [ AppComponent,
+                  SearchComponent,
+                  NavbarComponent,
+                  AboutComponent],
+  bootstrap: [ AppComponent ]
 })
-
 export class AppModule { }

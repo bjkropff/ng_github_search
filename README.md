@@ -14,11 +14,11 @@ Please keep that in mind before posting issues and PRs.
 
 ## Prerequisites
 
-Node.js and npm are essential to Angular development. 
-    
+Node.js and npm are essential to Angular development.
+
 <a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">
 Get it now</a> if it's not already installed on your machine.
- 
+
 **Verify that you are running at least node `v4.x.x` and npm `3.x.x`**
 by running `node -v` and `npm -v` in a terminal/console window.
 Older versions produce errors.
@@ -28,35 +28,16 @@ We recommend [nvm](https://github.com/creationix/nvm) for managing multiple vers
 ## Create a new project based on the QuickStart
 
 Clone this repo into new project folder (e.g., `my-proj`).
-```shell
-git clone https://github.com/angular/quickstart  my-proj
+```bash
+git clone  https://github.com/angular/quickstart  my-proj
 cd my-proj
 ```
 
 We have no intention of updating the source on `angular/quickstart`.
-Discard the `.git` folder..
-```shell
-rm -rf .git  # OS/X (bash)
+Discard everything "git-like" by deleting the `.git` folder.
+```bash
+rm -rf .git  # non-Windows
 rd .git /S/Q # windows
-```
-### Delete _non-essential_ files (optional)
-
-You can quickly delete the _non-essential_ files that concern testing and QuickStart repository maintenance
-(***including all git-related artifacts*** such as the `.git` folder and `.gitignore`!)
-by entering the following commands while in the project folder:
-
-##### OS/X (bash)
-```shell
-xargs -a non-essential-files.txt rm -rf
-rm app/*.spec*.ts
-rm non-essential-files.txt
-```
-
-##### Windows
-```shell
-for /f %i in (non-essential-files.txt) do del %i /F /S /Q
-rd .git /s /q
-rd e2e /s /q
 ```
 
 ### Create a new git repo
@@ -64,19 +45,16 @@ You could [start writing code](#start-development) now and throw it all away whe
 If you'd rather preserve your work under source control, consider taking the following steps.
 
 Initialize this project as a *local git repo* and make the first commit:
-```shell
+```bash
 git init
 git add .
 git commit -m "Initial commit"
 ```
 
->Recover the deleted `.gitignore` from the QuickStart repository 
-if you lost it in the _Delete non-essential files_ step.
-
 Create a *remote repository* for this project on the service of your choice.
 
 Grab its address (e.g. *`https://github.com/<my-org>/my-proj.git`*) and push the *local repo* to the *remote*.
-```shell
+```bash
 git remote add origin <repo-address>
 git push -u origin master
 ```
@@ -86,18 +64,22 @@ git push -u origin master
 
 Install the npm packages described in the `package.json` and verify that it works:
 
-```shell
+**Attention Windows Developers:  You must run all of these commands in administrator mode**.
+
+```bash
 npm install
 npm start
 ```
 
->Doesn't work in _Bash for Windows_ which does not support servers as of January, 2017.
+> If the `typings` folder doesn't show up after `npm install` please install them manually with:
 
-The `npm start` command first compiles the application, 
+> `npm run typings -- install`
+
+The `npm start` command first compiles the application,
 then simultaneously re-compiles and runs the `lite-server`.
 Both the compiler and the server watch for file changes.
 
-Shut it down manually with `Ctrl-C`.
+Shut it down manually with Ctrl-C.
 
 You're ready to write your application.
 
@@ -112,7 +94,8 @@ We've captured many of the most useful commands in npm scripts defined in the `p
 [John Papa](https://github.com/johnpapa) and
 [Christopher Martin](https://github.com/cgmartin)
 with excellent support for Angular apps that use routing.
-
+* `npm run typings` - runs the typings tool.
+* `npm run postinstall` - called by *npm* automatically *after* it successfully completes package installation. This script installs the TypeScript definition files this app requires.
 Here are the test related scripts:
 * `npm test` - compiles, runs and watches the karma unit tests
 * `npm run e2e` - run protractor e2e tests, written in JavaScript (*e2e-spec.js)
@@ -138,12 +121,14 @@ Run it with `npm test`
 That command first compiles the application, then simultaneously re-compiles and runs the karma test-runner.
 Both the compiler and the karma watch for (different) file changes.
 
-Shut it down manually with `Ctrl-C`.
+Shut it down manually with Ctrl-C.
 
 Test-runner output appears in the terminal window.
 We can update our app and our tests in real-time, keeping a weather eye on the console for broken tests.
-Karma is occasionally confused and it is often necessary to shut down its browser or even shut the command down (`Ctrl-C`) and
+Karma is occasionally confused and it is often necessary to shut down its browser or even shut the command down (Ctrl-C) and
 restart it. No worries; it's pretty quick.
+
+The `HTML-Reporter` is also wired in. That produces a prettier output; look for it in `~_test-output/tests.html`.
 
 ### End-to-end (E2E) Tests
 
@@ -163,7 +148,7 @@ The pass/fail test results appear at the bottom of the terminal window.
 A custom reporter (see `protractor.config.js`) generates a  `./_test-output/protractor-results.txt` file
 which is easier to read; this file is excluded from source control.
 
-Shut it down manually with `Ctrl-C`.
+Shut it down manually with Ctrl-C.
 
 [travis-badge]: https://travis-ci.org/angular/quickstart.svg?branch=master
 [travis-badge-url]: https://travis-ci.org/angular/quickstart
